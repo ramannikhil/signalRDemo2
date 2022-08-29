@@ -41,7 +41,7 @@ namespace WebApplication2
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        [Obsolete]
+       // [Obsolete]
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -58,21 +58,21 @@ namespace WebApplication2
 
             app.UseAuthorization();
 
-            app.UseSignalR(config =>
-            {
-                config.MapHub<SignalServer>("/signalServer");
-            });
-
-            //app.MapHub<SignalServer>("/signalServer", options=>
+            //app.UseSignalR(config =>
             //{
-            //    options.Transports = HttpTransportType.WebSockets | HttpTransportType.ServerSentEvents;
+            //    config.MapHub<SignalServer>("/signalServer");
             //});
+
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Employees}/{action=GetEmployees}/{id?}");
+                    pattern: "{controller=Employees}/{action=index}/{id?}");
+
+                endpoints.MapHub<SignalServer>("/signalServer");
+
             });// action=Index
         }
     }

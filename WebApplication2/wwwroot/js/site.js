@@ -12,13 +12,14 @@ $(() => {
 
     connection.start();//({ transport: 'longPolling' });
 
+
     connection.on("updatedEmployeesList", function () {
         loadData()
     })
 
     loadData();
 
-    function loadData(){
+    function loadData() {
         var tr = ''
 
         $.ajax({
@@ -27,7 +28,7 @@ $(() => {
             datatype: 'json',
             //contentType: 'application/json', // content type to Json
             success: (result) => {
-                $.each(result,(k, v)=> {
+                $.each(result, (k, v) => {
                     tr = tr + `<tr> 
                         <td>${v.empid}</td>
                         <td>${v.empName}</td>

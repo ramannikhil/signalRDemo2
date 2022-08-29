@@ -63,9 +63,11 @@ namespace WebApplication2.Repository
 
         private void dbChangeNotification(object sender, SqlNotificationEventArgs e)
         {
-           // _signal.Check();
             _hubContext.Clients.All.SendAsync("updatedEmployeesList"); // call the function from signalR hub
+
             //_signal.DisplayEmployees();
+            // _signal.Check();
+
         }
     }
 }

@@ -12,7 +12,6 @@ namespace WebApplication2
     public class SignalServer : Hub
     {
 
-
         //public void Task GetEmployeeJson(IEmployeeRepo _employeeRepository)
         //{
 
